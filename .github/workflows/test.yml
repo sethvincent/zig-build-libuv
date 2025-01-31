@@ -1,0 +1,25 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: zig build test
+    if: github.event.pull_request.draft == false
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+      fail-fast: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mlugg/setup-zig@v1.2.1
+        with:
+          version: 0.14.0-dev.2851+b074fb7dd
+      - run: zig version
+      - run: zig env
+      - run: zig build test
