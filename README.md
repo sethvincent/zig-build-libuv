@@ -4,7 +4,7 @@
 
 ## Work in progress
 
-Right now this only builds on macos and linux. Building on windows is on the way.
+This package hasn't had much use yet but should be generally usable. Usage examples are on the way. Currently you can look at [src/timer.zig](src/timer.zig) for some examples of loop and timer usage.
 
 ## About
 
