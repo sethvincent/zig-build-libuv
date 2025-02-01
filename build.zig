@@ -97,6 +97,40 @@ pub fn build(b: *std.Build) !void {
         });
     }
 
+    if (target_os == .windows) {
+        libuv.addCSourceFiles(.{
+            .root = libuv_dep.path("src"),
+            .files = &.{
+                "win/async.c",
+                "win/core.c",
+                "win/detect-wakeup.c",
+                "win/dl.c",
+                "win/error.c",
+                "win/fs.c",
+                "win/fs-event.c",
+                "win/getaddrinfo.c",
+                "win/getnameinfo.c",
+                "win/handle.c",
+                "win/loop-watcher.c",
+                "win/pipe.c",
+                "win/poll.c",
+                "win/process.c",
+                "win/process-stdio.c",
+                "win/signal.c",
+                "win/snprintf.c",
+                "win/stream.c",
+                "win/tcp.c",
+                "win/thread.c",
+                "win/tty.c",
+                "win/udp.c",
+                "win/util.c",
+                "win/winapi.c",
+                "win/winsock.c",
+            },
+            .flags = flags.items,
+        });
+    }
+
     if (target_os == .linux or target_os.isDarwin()) {
         libuv.addCSourceFiles(.{
             .root = libuv_dep.path("src"),

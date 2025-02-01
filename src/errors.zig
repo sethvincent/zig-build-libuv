@@ -168,5 +168,5 @@ pub fn message(err: Error) []const u8 {
         Error.EILSEQ => "illegal byte sequence",
         Error.ESOCKTNOSUPPORT => "socket type not supported",
         Error.EUNATCH => "protocol driver not attached",
-     };
+    };
 }
